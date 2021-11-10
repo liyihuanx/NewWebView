@@ -32,6 +32,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    api project(":module_common")
+    api project(":module_base")
     kapt 'com.alibaba:arouter-compiler:1.5.2'
 }

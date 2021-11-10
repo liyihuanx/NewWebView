@@ -1,6 +1,8 @@
 package liyihuan.app.android.module_base
 
 import android.app.Application
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 
 /**
  * @ClassName: BaseApplication
@@ -8,5 +10,14 @@ import android.app.Application
  * @Author: liyihuan
  * @Date: 2021/11/9 22:13
  */
-open class BaseApplication : Application() {
+open class BaseApplication : Application(), ViewModelStoreOwner  {
+    private val appViewModelStore :ViewModelStore by lazy{
+        ViewModelStore()
+    }
+
+    override fun getViewModelStore(): ViewModelStore {
+        return appViewModelStore
+    }
+
+
 }

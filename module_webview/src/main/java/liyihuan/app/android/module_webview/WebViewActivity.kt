@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import liyihuan.app.android.module_common.RouterPath
+import liyihuan.app.android.module_base.RouterPath
 
 /**
  * @ClassName: WebViewActivity
@@ -17,8 +17,8 @@ import liyihuan.app.android.module_common.RouterPath
 @Route(path = RouterPath.WebView.WebViewActivity)
 class WebViewActivity : AppCompatActivity() {
 
-    //    @Autowired(required = true)
-//    @JvmField
+    @Autowired(required = true)
+    @JvmField
     var webUrl: String = ""
 
 
@@ -26,7 +26,7 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
 
-//        ARouter.getInstance().inject(this)
+        ARouter.getInstance().inject(this)
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         val fragment: Fragment = WebFragment.newInstance(webUrl)

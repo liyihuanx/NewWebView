@@ -7,5 +7,6 @@
         <activity android:name=".WebViewActivity"
             android:process=":webview"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <service android:name=".mainprocess.MainCommandService"/>
     </application>
 </manifest>

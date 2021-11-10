@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.activity_main.*
-import liyihuan.app.android.module_common.RouterPath
+import liyihuan.app.android.module_base.RouterPath
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
         btnWebView.setOnClickListener {
             ARouter.getInstance()
                 .build(RouterPath.WebView.WebViewActivity)
+                .withString("webUrl", "testUrl")
                 .navigation()
         }
-
     }
 }

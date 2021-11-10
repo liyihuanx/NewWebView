@@ -23,17 +23,13 @@
         }
         function openActivityA(){
             console.log("openActivityA.");
-            myjs.takeNativeAction("openPage", {target_class: "com.my.webview.MainProcessTestActivity"});
-        }
-        function openActivityB(){
-            console.log("openActivityA.");
-            myjs.takeNativeAction("openPage", {target_class: "com.my.webview.MainProcessTestActivityB"});
+            myjs.takeNativeAction("openActivity", {message: "SecondActivity"});
         }
         function login(){
             console.log("login.");
             myjs.takeNativeActionWithCallback("login", {}, function(res) {
                  var element = document.createElement("div");
-                 element.appendChild(document.createTextNode("userName: "+res.accountName));
+                 element.appendChild(document.createTextNode("result: "+res.accountName));
                  document.getElementById('login_id').appendChild(element);
             });
         }
@@ -42,9 +38,8 @@
 </head>
 <body style="height: 100%;">
 <div class="item" style="font-size: 20px; color: #ffffff" onclick="callAppToast()">调用: showToast</div>
-<div class="item" style="font-size: 20px; color: #ffffff" onclick="openActivityA()">打开MainProcessTestActivity</div>
-<div class="item" style="font-size: 20px; color: #ffffff" onclick="openActivityB()">打开另外一个主进程的activity</div>
-<div id="login_id" class="item" style="font-size: 20px; color: #ffffff" onclick="login()">登录并且返回结果</div>
+<div class="item" style="font-size: 20px; color: #ffffff" onclick="openActivityA()">打开主进程的页面</div>
+<div id="login_id" class="item" style="font-size: 20px; color: #ffffff" onclick="login()">调用且返回结果</div>
 
 </body>
 </html>

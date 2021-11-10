@@ -1,4 +1,4 @@
-package liyihuan.app.android.module_common
+package liyihuan.app.android.module_base
 
 /**
  * @ClassName: RouterPath
@@ -11,6 +11,7 @@ class RouterPath {
     object Main {
         private const val groupPath = "/Main/"
         const val MainActivity = groupPath + "MainActivity"
+        const val SecondActivity = groupPath + "SecondActivity"
     }
 
     object WebView {

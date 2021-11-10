@@ -9,7 +9,6 @@ import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_web.*
 import liyihuan.app.android.module_webview.callback.WebViewCallBack
-import liyihuan.app.android.module_webview.webview.BaseWebView
 
 /**
  * @ClassName: WebFragment
@@ -21,7 +20,6 @@ class WebFragment : Fragment(), WebViewCallBack {
 
     private lateinit var rootview: View
     private lateinit var webUrl: String
-    private lateinit var baseWebView: BaseWebView
 
     companion object {
         fun newInstance(url: String): WebFragment {
@@ -33,24 +31,27 @@ class WebFragment : Fragment(), WebViewCallBack {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            webUrl = it.getString(WebConstants.URL).toString()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         rootview = inflater.inflate(R.layout.fragment_web, container, false)
-        baseWebView = rootview.findViewById(R.id.baseWebView)
+
         return rootview
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // TODO 这里不行
-//        baseWebView.initWebClient(this)
-        arguments?.let {
-            webUrl = it.getString(WebConstants.URL).toString()
-//            baseWebView.loadUrl(webUrl)
-        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        baseWebView.initWebClient(this)
+        baseWebView.loadUrl("${WebConstants.ANDROID_ASSET_URI}demo.html")
     }
 
     override fun pageStarted(url: String?) {
